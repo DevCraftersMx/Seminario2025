@@ -35,6 +35,7 @@ public class TaskEndpoint {
 
   @GetMapping("/findAllCategories")
   public ResponseEntity<ResponseBean<List<CategoriesVO>>> findAllCategories() {
+    LOG.info("findAllCategoriesEndpoint - In");
     ResponseEntity<ResponseBean<List<CategoriesVO>>> response = null;
     List<CategoriesVO> categories = null;
     try {
@@ -43,11 +44,13 @@ public class TaskEndpoint {
     } catch (Exception e) {
       response = Utils.handle(e, "Categorias no encontradas");
     }
+    LOG.info("findAllCategoriesEndpoint - Out");
     return response;
   }
   
   @GetMapping("/findAllStatus")
   public ResponseEntity<ResponseBean<List<StatusVO>>> findAllStatus() {
+    LOG.info("findAllStatusEndpoint - In");
     ResponseEntity<ResponseBean<List<StatusVO>>> response = null;
     List<StatusVO> status = null;
     try {
@@ -56,11 +59,13 @@ public class TaskEndpoint {
     } catch (Exception e) {
       response = Utils.handle(e, "Estados no encontrados");
     }
+    LOG.info("findAllStatusEndpoint - Out");
     return response;
   }
 
   @GetMapping("/findAllPriorities")
   public ResponseEntity<ResponseBean<List<PriorityVO>>> findAllPriorities() {
+    LOG.info("findAllPrioritiesEndpoint - In");
     ResponseEntity<ResponseBean<List<PriorityVO>>> response = null;
     List<PriorityVO> priorities = null;
     try {
@@ -69,11 +74,13 @@ public class TaskEndpoint {
     } catch (Exception e) {
       response = Utils.handle(e, "Prioridades no encontradas");
     }
+    LOG.info("findAllPrioritiesEndpoint - Out");
     return response;
   }
 
   @GetMapping("/findAllTasks")
   public ResponseEntity<ResponseBean<List<TaskVO>>> findAllTasks() {
+    LOG.info("findAllTasksEndpoint - In");
     ResponseEntity<ResponseBean<List<TaskVO>>> response = null;
     List<TaskVO> tasks = null;
     try {
@@ -82,11 +89,13 @@ public class TaskEndpoint {
     } catch (Exception e) {
       response = Utils.handle(e, "Tareas no encontradas");
     }
+    LOG.info("findAllTasksEndpoint - Out");
     return response;
   }
 
   @PostMapping("/createTask")
   public ResponseEntity<ResponseBean<Void>> createTask(@RequestBody TaskDTO taskDTO) {
+    LOG.info("createTaskEndpoint - In");
     ResponseEntity<ResponseBean<Void>> response = null;
     try {
       taskService.createTask(taskDTO);
@@ -94,11 +103,13 @@ public class TaskEndpoint {
     } catch (Exception e) {
       response = Utils.handle(e, "Error al crear la tarea");
     }
+    LOG.info("createTaskEndpoint - Out");
     return response;
   }
 
   @PostMapping("/updateTask")
   public ResponseEntity<ResponseBean<Void>> updateTask(@RequestParam int id, @RequestBody TaskDTO task) {
+    LOG.info("updateTaskEndpoint - In");
     ResponseEntity<ResponseBean<Void>> response = null;
     try {
       taskService.updateTask(id, task);
@@ -106,11 +117,13 @@ public class TaskEndpoint {
     } catch (Exception e) {
       response = Utils.handle(e, "Error al actualizar la tarea");
     }
+    LOG.info("updateTaskEndpoint - Out");
     return response;
   }
 
   @GetMapping("/deleteTask")
   public ResponseEntity<ResponseBean<Void>> deleteTask(@RequestParam int id) {
+    LOG.info("deleteTaskEndpoint - In");
     ResponseEntity<ResponseBean<Void>> response = null;
     try {
       taskService.deleteTask(id);
@@ -118,6 +131,7 @@ public class TaskEndpoint {
     } catch (Exception e) {
       response = Utils.handle(e, "Error al eliminar la tarea");
     }
+    LOG.info("deleteTaskEndpoint - Out");
     return response;
   }
 }

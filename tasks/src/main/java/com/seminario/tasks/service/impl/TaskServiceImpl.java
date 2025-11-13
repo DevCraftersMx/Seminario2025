@@ -39,39 +39,46 @@ public class TaskServiceImpl implements TaskService {
 
   @Override
   public List<CategoriesVO> getAllCategories() throws AppException {
+    LOG.info("getAllCategoriesService - In");
     List<CategoriesVO> categories = null;
     try {
       categories = categoriesRepository.findAll();
     } catch (Exception e) {
       Utils.raise(e, "Error no se pudo traer los datos");
     }
+    LOG.info("getAllCategoriesService - Out");
     return categories;
   }
 
   @Override
   public List<StatusVO> getAllStatus() throws AppException {
+    LOG.info("getAllStatusService - In");
     List<StatusVO> status = null;
     try {
       status = statusRepository.findAll();
     } catch (Exception e) {
       Utils.raise(e, "Error no se pudo traer los datos");
     }
+    LOG.info("getAllStatusService - Out");
     return status;
   }
 
   @Override
   public List<PriorityVO> getAllPriorities() throws AppException {
+    LOG.info("getAllPrioritiesService - In");
     List<PriorityVO> priorities = null;
     try {
       priorities = priorityRepository.findAll();
     } catch (Exception e) {
       Utils.raise(e, "Error no se pudo traer los datos");
     }
+    LOG.info("getAllPrioritiesService - Out");
     return priorities;
   }
 
   @Override
   public List<TaskVO> getAllTasks() throws AppException {
+    LOG.info("getAllTasksService - In");
     List<TaskVO> tasks = null;
     try {
       tasks = taskRepository.getAll();
@@ -81,11 +88,13 @@ public class TaskServiceImpl implements TaskService {
     } catch (Exception e) {
       Utils.raise(e, "Error no se pudo traer los datos");
     }
+    LOG.info("getAllTasksService - Out");
     return tasks;
   }
 
   @Override
   public void createTask(TaskDTO task) throws AppException {
+    LOG.info("createTaskService - In");
     TaskVO newTask = new TaskVO();
     try {
       newTask.setName(task.getName());
@@ -108,10 +117,12 @@ public class TaskServiceImpl implements TaskService {
     } catch (Exception e) {
       Utils.raise(e, "Error no se pudo traer los datos");
     }
+    LOG.info("createTaskService - Out");
   }
 
   @Override
   public void updateTask(int id, TaskDTO task) throws AppException {
+    LOG.info("updateTaskService - In");
     TaskVO existingTask = null;
     try {
       existingTask = taskRepository.findById(id);
@@ -140,10 +151,12 @@ public class TaskServiceImpl implements TaskService {
     } catch (Exception e) {
       Utils.raise(e, "Error no se pudo traer los datos");
     }
+    LOG.info("updateTaskService - Out");
   }
 
   @Override
   public void deleteTask(int taskId) throws AppException {
+    LOG.info("deleteTaskService - In");
     TaskVO existingTask = null;
     try {
       existingTask = taskRepository.findById(taskId);
@@ -161,5 +174,6 @@ public class TaskServiceImpl implements TaskService {
     } catch (Exception e) {
       Utils.raise(e, "Error no se pudo traer los datos");
     }
+    LOG.info("deleteTaskService - Out");
   }
 }

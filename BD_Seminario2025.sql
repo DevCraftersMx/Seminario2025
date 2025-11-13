@@ -1,3 +1,6 @@
+create DATABASE seminario2025;
+use seminario2025;
+
 Create table categories (
 	id int not null primary key auto_increment,
     name varchar(150) not null,
